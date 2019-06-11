@@ -1,0 +1,54 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~material-design-iconic-font/dist/css/material-design-iconic-font.min.css";
+@import "~perfect-scrollbar/css/perfect-scrollbar.css";
+@import "~roboto-fontface/css/roboto/roboto-fontface.css";
+@import "~node-waves/dist/waves.min.css";
+
+html, body { padding: 0; margin: 0; }
+html {
+  position: relative;
+  min-height: 100%;    
+}
+body{
+  font-family: roboto;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+}
+main {
+  margin-top: 65px;
+}
+
+
+// mixin
+@import './Resources/scss/mixin/forms.mixin.scss';
+
+@import './Resources/scss/partials/layout.vars';
+@import './Resources/scss/screen';
+@import './Resources/scss/loader';
+
+@import './Resources/scss/header';
+@import './Resources/scss/hamburger';
+@import './Resources/scss/sidebar';
+@import './Resources/scss/dropdown';
+@import './Resources/scss/colors';
+@import './Resources/scss/charts';
+@import './Resources/scss/action';
+@import './Resources/scss/utilities';
+@import './Resources/scss/widgets';
+
+@import './Resources/scss/generics';
+
+//override
+
+@import './Resources/scss/overrides/card';
+@import './Resources/scss/overrides/button';
+@import './Resources/scss/overrides/tabs';
+@import './Resources/scss/overrides/forms';
+
+// animations
+@import './Resources/scss/animations/ripple.scss';
+
+//responsive styles
+
+@import './Resources/scss/partials/responsive.partial';

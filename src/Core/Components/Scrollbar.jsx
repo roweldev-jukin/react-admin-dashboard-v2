@@ -1,7 +1,7 @@
-/* eslint-disable guard-for-in, no-restricted-syntax, no-console */
+/* eslint-disable guard-for-in, no-restricted-syntax, no-console, react/prop-types */
 
 import * as React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import PerfectScrollbar from 'perfect-scrollbar';
 
@@ -20,20 +20,27 @@ const handlerNameByEvent = {
 
 Object.freeze(handlerNameByEvent);
 
-export default class Scrollbar extends React.PureComponent {
-  
-  static propTypes = {
-    type: PropTypes.string.isRequired,
-    receiveRef: PropTypes.func
+export default class Scrollbar extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.ps = {};
+
+    this.handlerByEvent = new Map();
   }
 
-  static defaultProps = {
-    receiveRef: () => {}
-  };
+  // static propTypes = {
+  //   type: PropTypes.string.isRequired,
+  //   receiveRef: PropTypes.func
+  // }
 
-  ps;
+  // static defaultProps = {
+  //   receiveRef: () => {}
+  // };
 
-  handlerByEvent = new Map();
+  // ps;
+
+  // handlerByEvent = new Map();
 		
 	componentDidMount = () => {
 		this.ps = new PerfectScrollbar(this.reference);
@@ -54,10 +61,10 @@ export default class Scrollbar extends React.PureComponent {
 
   
 	componentWillUnmount = () => {
-		Object.keys(this.handlerByEvent).forEach((value, key) => {
-			this.reference.removeEventListener(key, value, false);
-		});
-		this.handlerByEvent.clear();
+		// Object.keys(this.handlerByEvent).forEach((value, key) => {
+		// 	this.reference.removeEventListener(key, value, false);
+		// });
+		// this.handlerByEvent.clear();
     this.ps.destroy(this.reference);    
   }
   

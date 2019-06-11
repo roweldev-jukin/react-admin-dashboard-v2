@@ -15,7 +15,7 @@ export default class extends React.PureComponent{
     
     return(
       <div>
-        Default Page asdasd
+        Default Page adsasd
       </div>
     )
   }

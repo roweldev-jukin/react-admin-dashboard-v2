@@ -14,12 +14,18 @@ module.exports = {
     publicPath: '/static'
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],   
   },
   devtool: 'inline-source-map',
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin({
+      multiStep: true
+    })
   ],
+  devServer: {
+    contentBase: './static',
+    hot: true
+  },
   module: {
     rules: [
       {
@@ -28,10 +34,39 @@ module.exports = {
         use: 'babel-loader',
         include: path.join(__dirname, 'src'),
       }, {
-        test: /.(css|scss)$/,
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              camelCase: true,
+              sourceMap: true
+            }
+          }
+        ]
+      }, {
+        test: /node_modules.*\.css$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      },{
+        test: /.(scss)$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
       }, {
-        test: /\.(png|woff|woff2|eot|ttf|svg|jpeg|jpg)$/,
+        test: /\.(png|woff|woff2|eot|ttf|svg|jpeg|jpg|gif)$/,
         use: 'url-loader?limit=100000'
       }
     ]

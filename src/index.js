@@ -1,33 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Template from './App';
 
-import App from './App';
-import Routes from './routes';
-import defaultReducer from './Config/reducers';
-import { configureStore, history } from './Utilities/configureStore';
+import Portal from './Portal';
+import * as config from './Config/reducers';
 
-import Sidebar from './Core/Common/Sidebar'
-import Header from './Core/Common/Header';
+import './styles.scss';
 
-import './styles/app.scss';
-
-const store = configureStore(defaultReducer);
+window.env = "development";
 
 ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <App>
-        <Header />
-        <Sidebar />
-        <div className="overlay" />
-        <main className="container">
-          <Routes />
-        </main>
-      </App>
-    </ConnectedRouter>
-  </Provider>,
+  <Portal config={config} env={window.env}>
+    <Template />
+  </Portal>,
   document.getElementById('root')
 );
