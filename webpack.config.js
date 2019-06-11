@@ -11,7 +11,7 @@ module.exports = {
   output: {
     path: __dirname,
     filename: 'bundle.js',
-    publicPath: '/static'
+    publicPath: '/public'
   },
   resolve: {
     extensions: ['.js', '.jsx'],   
@@ -23,7 +23,7 @@ module.exports = {
     })
   ],
   devServer: {
-    contentBase: './static',
+    contentBase: './public',
     hot: true
   },
   module: {
