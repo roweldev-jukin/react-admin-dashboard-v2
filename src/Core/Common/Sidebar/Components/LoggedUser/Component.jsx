@@ -2,6 +2,8 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Collapse } from 'react-bootstrap';
 
+import './Component.scss';
+
 import profile from '@/Resources/images/profile.jpeg';
 import Ripple from '@/Core/Components/Ripple'
 
@@ -12,8 +14,6 @@ export default class extends React.PureComponent {
 
     onClickProfile: PropTypes.func.isRequired
   }
-
-  
 
   render() {
     const { showProfileAction } = this.props;

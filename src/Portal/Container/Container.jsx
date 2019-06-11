@@ -2,7 +2,6 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import Wrapper from '../Components/Wrapper'
 import StartupScreen from '../Screens/Startup';
 import LoginScreen from '../Screens/Login';
 
@@ -23,7 +22,7 @@ export default class extends React.PureComponent {
 
     return(
 
-      <Wrapper>
+      <div>
         
         {isStarting && <StartupScreen />}
 
@@ -46,7 +45,7 @@ export default class extends React.PureComponent {
 
         )}
 
-      </Wrapper> 
+      </div> 
     )
   }
 

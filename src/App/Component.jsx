@@ -15,7 +15,7 @@ export default class extends PureComponent {
 
   render() {    
     return (
-      <div className="App">
+      <React.Fragment>
 
         <Header />
 
@@ -27,7 +27,7 @@ export default class extends PureComponent {
           <Routes />
         </main>
 
-      </div>
+      </React.Fragment>
     );
     
   }
