@@ -32,6 +32,8 @@ node_modules
 
 # App packaged
 /static
+# bundle
+bundle.js
 
 .idea
 
