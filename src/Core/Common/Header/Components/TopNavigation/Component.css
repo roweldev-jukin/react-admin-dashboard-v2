@@ -1,0 +1,57 @@
+.navigation {
+  list-style: none;
+  margin: 0 0 0 auto;
+  padding: 0;
+}
+
+.navigation :global(.dropdown-menu) {
+  margin-top: 10px;
+}
+
+.navigation :global(.dropdown-menu .dropdown-arrow) {
+  right: 10px;
+}
+
+.navigation>li {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  padding: 5px;
+}
+
+.navigation>li>div,
+.navigation>li>a {
+  width: 40px;
+  height: 40px;
+  display: block;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  transition: background-color .3s;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+}
+
+.navigation >li >div:hover,
+.navigation >li >a:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  transition-duration: .3s;
+}
+
+.navigation > li >div i,
+.navigation > li >a i {
+  font-size: 24px;
+}
+
+.navigation > li > div img {
+  height: 32px;
+  width: 32px;
+  background-size: 32px 32px;
+  margin-top: -10px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 50%;
+  z-index: 0;
+}
+

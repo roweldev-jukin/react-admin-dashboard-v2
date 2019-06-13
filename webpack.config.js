@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
   mode: 'development',
   entry: [
-    'webpack-dev-server/client?http://localhost:5000',
+    'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/dev-server',
     './src/index'
   ],
@@ -18,9 +18,7 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   plugins: [
-    new webpack.HotModuleReplacementPlugin({
-      multiStep: true
-    })
+    new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
     contentBase: './public',

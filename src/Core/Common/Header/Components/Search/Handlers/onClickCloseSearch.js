@@ -1,0 +1,1 @@
+export default () => async () => document.querySelector('.search-container').classList.remove('active');

@@ -8,7 +8,8 @@ import Header from '@/Core/Common/Header';
 export default class extends PureComponent {
   
   static propTypes = {
-    componentDidMount: PropTypes.func.isRequired
+    componentDidMount: PropTypes.func.isRequired,
+    onClickOverlay: PropTypes.func.isRequired
   }
 
   componentDidMount = () => this.props.componentDidMount();
@@ -21,7 +22,7 @@ export default class extends PureComponent {
 
         <Sidebar />
 
-        <div className="overlay" />
+        <div className="overlay" onClick={this.props.onClickOverlay} role="presentation" />
 
         <main className="container">
           <Routes />
