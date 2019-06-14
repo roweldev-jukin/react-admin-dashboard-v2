@@ -9,10 +9,15 @@ const Home = Loadable({
   loading: Loading,
 });
 
+const Typography = Loadable({
+  loader: () => import('./Screens/Typography'),
+  loading: Loading,
+});
 
 export default () => (
   <Switch>    
     <Route path="/" exact component={Home} />
+    <Route path="/typography" exact component={Typography} />
   </Switch>
 );
 

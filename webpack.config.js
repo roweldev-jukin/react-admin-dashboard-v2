@@ -1,10 +1,12 @@
 const webpack = require('webpack');
 const path = require('path');
 
+const port = 3000;
+
 module.exports = {
   mode: 'development',
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
+    `webpack-dev-server/client?http://localhost:${port}`,
     'webpack/hot/dev-server',
     './src/index'
   ],
@@ -14,7 +16,7 @@ module.exports = {
     publicPath: '/public'
   },
   resolve: {
-    extensions: ['.js', '.jsx'],   
+    extensions: ['.js', '.jsx', '*'],   
   },
   devtool: 'inline-source-map',
   plugins: [

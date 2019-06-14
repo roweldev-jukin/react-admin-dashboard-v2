@@ -2,6 +2,7 @@ button.navbar-toggle{
   padding: 4px 10px;
   border: none !important;
   background-color: transparent;
+  outline: none;
 }
 button.navbar-toggle:hover,
 button.navbar-toggle:focus{
@@ -66,7 +67,7 @@ button.navbar-toggle:focus{
 
 @media screen and (min-width: 1200px){
   .navbar-toggle {
-    display: none;
+    // display: none;
   }
 }
 
