@@ -1,16 +1,17 @@
 const webpack = require('webpack');
 const path = require('path');
-var CompressionPlugin = require('compression-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
+  mode: "production",
   entry: './src/index',
   output: {
-    path: path.join(__dirname, 'dist/static'),
+    path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
     publicPath: '/'
   },
   resolve: {
-    extensions: ['.js']
+    extensions: ['.js', '.jsx', '*']
   },
   devtool: 'source-map',
   plugins: [
@@ -19,28 +20,59 @@ module.exports = {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
     new webpack.optimize.AggressiveMergingPlugin(),
-    new CompressionPlugin({
-      asset: "[path].gz[query]",
-      algorithm: "gzip",
-      test: /\.js$|\.css$|\.html$/,
-      threshold: 10240,
-      minRatio: 0.8
-    })
   ],
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true,
+        terserOptions: {}
+      }),
+    ],
+  },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        use: ['babel-loader'],
         exclude: /node_modules/,
-        include: path.join(__dirname, 'src')
+        use: 'babel-loader',
+        include: path.join(__dirname, 'src'),
       }, {
-        test: /.(css|scss)$/,
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              camelCase: true,
+              sourceMap: true
+            }
+          }
+        ]
+      }, {
+        test: /node_modules.*\.css$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      },{
+        test: /.(scss)$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
       }, {
-        test: /\.(png|woff|woff2|eot|ttf|svg|jpeg|jpg)$/,
+        test: /\.(png|woff|woff2|eot|ttf|svg|jpeg|jpg|gif)$/,
         use: 'url-loader?limit=100000'
       }
     ]
