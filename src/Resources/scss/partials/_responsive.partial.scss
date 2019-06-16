@@ -37,7 +37,6 @@
     main {
       width: calc(100% - 53px);
       margin-left: 53px !important;
-      
     }
 
     .navigation > li > div {
@@ -69,6 +68,21 @@
           left: 16px;
           transition: width .3s,height .3s, left .3s;
         }
+      }
+
+      .navigation > li > div {
+        margin-left: 0px;
+        border-radius: 0 16px 16px 0;
+        width: 98%;
+      }
+      .navigation > li > div a i {
+        margin-left: 0px;
+        transition: margin .15s cubic-bezier(0.4,0.0,0.2,1);
+      }
+  
+      .navigation > li > div a span {
+        opacity: 1;
+        transition: opacity .15s cubic-bezier(0.4,0.0,0.2,1);
       }
     }
   }

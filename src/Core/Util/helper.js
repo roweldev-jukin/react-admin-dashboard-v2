@@ -41,14 +41,25 @@ export const validate = {
 export const getParent = (parentNode: string, childNode: any, type: string) => {
   let obj = childNode.parentNode;
   if (type === 'tag' || type == null) {
-    while (obj.tagName !== parentNode) {
-      obj = obj.parentNode;
+    try {
+      while (obj.tagName !== parentNode) {
+        obj = obj.parentNode;
+      }
+    } catch(e) {
+      return null
     }
   }
   else if (type === 'id') {
-    while (obj.id !== parentNode) {
-      obj = obj.parentNode;
+    try {
+      while (obj && obj.id !== parentNode) {
+        obj = obj.parentNode;
+      }
+    } catch(e) {
+      return null;
     }
+     
+    
+    return null;
   }
   else if (type === 'class') {
     while (obj.classList.contains(parentNode) === false) {

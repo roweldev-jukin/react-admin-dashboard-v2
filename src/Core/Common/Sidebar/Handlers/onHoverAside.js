@@ -1,3 +1,1 @@
-export default () => async () => {
-  setTimeout(()=> document.body.classList.toggle('active') , 250)
-}
+export default () => async () => setTimeout(()=> document.body.classList.toggle('active') , 100)
